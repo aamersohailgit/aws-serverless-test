@@ -11,6 +11,7 @@ provider:
   timeout: 900
   environment:
     ALLOWS_INSECURE_SSL_CERTIFICATES: true
+    WEATHER_API_KEY: '17e5a7bfc4ee5f426342134e08101c41'
 
 
 plugins:
@@ -21,4 +22,8 @@ plugins:
 functions:
   weatherApi:
     handler: src/handlers/weather.handler
-    
+    events:
+      - http:
+          method: GET
+          path: weather
+          cors: true
